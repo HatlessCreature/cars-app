@@ -40,6 +40,18 @@ export default function AddCar() {
         });
     };
 
+    const handlePreview = () => {
+        alert(`
+        Brand: ${newCar.brand} \n
+        Model: ${newCar.model} \n
+        Year: ${newCar.year} \n
+        Max speed: ${newCar.maxSpeed} \n
+        Number of doors: ${newCar.numberOfDoors} \n
+        Automatic: ${newCar.isAutomatic ? 'Yes' : 'No'} \n
+        Engine: ${newCar.engine} \n
+        `);
+    };
+
     return (
         <div>
             <h1>Create a new car</h1>
@@ -122,6 +134,7 @@ export default function AddCar() {
 
                 <button>{'Create car'}</button>
                 <button type='button' onClick={handleReset}>Reset</button>
+                <button type='button' onClick={handlePreview}>Preview</button>
             </form>
         </div>
     );
