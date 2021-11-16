@@ -71,9 +71,8 @@ export default function AddCar() {
 
     return (
         <div>
-            <h1>Create a new car</h1>
-            <form
-                onSubmit={handleSubmit}
+            <h1>{id ? 'Edit a car' : 'Create a new car'}</h1>
+            <form onSubmit={handleSubmit}
                 style={{
                     display: 'flex',
                     flexDirection: 'column',

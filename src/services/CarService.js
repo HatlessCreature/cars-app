@@ -53,6 +53,18 @@ class CarService {
 
         return null;
     }
+
+    async delete(id) {
+        try {
+            const { data } = await this.client.delete(`cars/${id}`);
+
+            return data;
+        } catch (error) {
+            console.log(error);
+        }
+
+        return {};
+    }
 }
 
 export default new CarService();

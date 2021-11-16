@@ -20,6 +20,19 @@ export default function AppCars() {
         history.push(`edit/${id}`);
     };
 
+    const handleDelete = async (delId) => {
+        const response = prompt("Type 'delete' to confirm deletion.");
+
+        if (response !== 'delete') {
+            return;
+        }
+        const data = await CarService.delete(delId);
+
+        if (data.count > 0) {
+            setCars(cars.filter(({ id }) => id !== delId));
+        }
+    };
+
     return (
         <div>
             <h3>Cars</h3>
@@ -36,6 +49,7 @@ export default function AppCars() {
                         engine={car.engine}
                         numberOfDoors={car.numberOfDoors}
                         editFunction={handleEdit}
+                        deleteFunction={handleDelete}
                     />
                 ))}
             </ul>
