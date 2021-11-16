@@ -17,6 +17,18 @@ class CarService {
         }
         return [];
     }
+
+    async add(newCar) {
+        try {
+            const { data } = await this.client.post('cars', newCar);
+            return data;
+
+        } catch (error) {
+            console.log(error);
+        }
+
+        return null;
+    }
 }
 
 export default new CarService();

@@ -13,6 +13,7 @@ export default function SingleCar({
             display: 'flex',
             flexDirection: 'column',
             padding: 2,
+            marginBottom: '20px',
         }}
         >
             <div>Brand: {brand}</div>

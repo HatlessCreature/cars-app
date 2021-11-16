@@ -9,7 +9,6 @@ export default function AppCars() {
     useEffect(() => {
         async function retrieveCars() {
             const data = await CarService.getAll();
-
             setCars(data);
         };
         retrieveCars();

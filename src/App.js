@@ -1,7 +1,8 @@
-import logo from './logo.svg';
+
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 import AppCars from './pages/AppCars';
+import AddCar from './pages/AddCar';
 
 function App() {
   return (
@@ -12,11 +13,17 @@ function App() {
             <li>
               <Link to='/cars'>Cars</Link>
             </li>
+            <li>
+              <Link to='/add'>Create a new car</Link>
+            </li>
           </ul>
         </nav>
         <Switch>
           <Route exact path='/cars'>
             <AppCars />
+          </Route>
+          <Route exact path='/add'>
+            <AddCar />
           </Route>
           <Route exact path={`/`}>
             <Redirect to='/cars' />
