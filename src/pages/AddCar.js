@@ -28,6 +28,18 @@ export default function AddCar() {
 
     };
 
+    const handleReset = () => {
+        setNewCar({
+            brand: '',
+            model: '',
+            year: rangeOfYears[0],
+            maxSpeed: '',
+            numberOfDoors: '',
+            isAutomatic: false,
+            engine: '',
+        });
+    };
+
     return (
         <div>
             <h1>Create a new car</h1>
@@ -109,7 +121,7 @@ export default function AddCar() {
                 ))}
 
                 <button>{'Create car'}</button>
-
+                <button type='button' onClick={handleReset}>Reset</button>
             </form>
         </div>
     );
