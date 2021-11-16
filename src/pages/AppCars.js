@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import SingleCar from '../components/SingleCar';
 import CarService from '../services/CarService';
 
 export default function AppCars() {
 
+    const history = useHistory();
     const [cars, setCars] = useState([]);
 
     useEffect(() => {
@@ -13,6 +15,10 @@ export default function AppCars() {
         };
         retrieveCars();
     }, []);
+
+    const handleEdit = (id) => {
+        history.push(`edit/${id}`);
+    };
 
     return (
         <div>
@@ -29,6 +35,7 @@ export default function AppCars() {
                         isAutomatic={car.isAutomatic}
                         engine={car.engine}
                         numberOfDoors={car.numberOfDoors}
+                        editFunction={handleEdit}
                     />
                 ))}
             </ul>

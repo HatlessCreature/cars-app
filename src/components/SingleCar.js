@@ -7,6 +7,7 @@ export default function SingleCar({
     isAutomatic,
     engine,
     numberOfDoors,
+    editFunction
 }) {
     return (
         <li style={{
@@ -23,6 +24,7 @@ export default function SingleCar({
             <div>Automatic: {isAutomatic ? 'Yes' : 'No'}  </div>
             <div>Engine: {engine}</div>
             <div>Number of doors: {numberOfDoors}</div>
+            <button onClick={() => editFunction(id)}>Edit</button>
         </li>
     );
 }

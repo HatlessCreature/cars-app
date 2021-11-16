@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import CarService from '../services/CarService';
 
 const rangeOfYears = Array(2018 - 1990 + 1)
@@ -10,6 +10,7 @@ const engines = ['diesel', 'petrol', 'electric', 'hybrid'];
 
 export default function AddCar() {
     const history = useHistory();
+    const { id } = useParams();
 
     const [newCar, setNewCar] = useState({
         brand: '',
@@ -23,7 +24,11 @@ export default function AddCar() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await CarService.add(newCar);
+        if (id) {
+            await CarService.edit(id, newCar);
+        } else {
+            await CarService.add(newCar);
+        }
         history.push('/cars');
 
     };
@@ -51,6 +56,18 @@ export default function AddCar() {
         Engine: ${newCar.engine} \n
         `);
     };
+
+    useEffect(() => {
+        async function retrieveCar() {
+            const retrievedCar = await CarService.get(id);
+            setNewCar({ ...retrievedCar });
+        };
+
+        if (id) {
+            retrieveCar();
+        }
+
+    }, [id]);
 
     return (
         <div>
@@ -136,7 +153,7 @@ export default function AddCar() {
                     </span>
                 ))}
 
-                <button>{'Create car'}</button>
+                <button>{id ? 'Apply edit' : 'Create car'}</button>
                 <button type='button' onClick={handleReset}>Reset</button>
                 <button type='button' onClick={handlePreview}>Preview</button>
             </form>
