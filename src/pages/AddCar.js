@@ -69,6 +69,8 @@ export default function AddCar() {
                     onChange={({ target }) =>
                         setNewCar({ ...newCar, brand: target.value })
                     }
+                    required
+                    minLength='2'
                 />
                 <input
                     type='text'
@@ -77,6 +79,8 @@ export default function AddCar() {
                     onChange={({ target }) =>
                         setNewCar({ ...newCar, model: target.value })
                     }
+                    required
+                    minLength='2'
                 />
                 <select
                     value={newCar.year}
@@ -105,6 +109,7 @@ export default function AddCar() {
                     onChange={({ target }) =>
                         setNewCar({ ...newCar, numberOfDoors: target.value })
                     }
+                    required
                 />
                 <span>
                     <label>Is it automatic?</label>
@@ -116,17 +121,16 @@ export default function AddCar() {
                         }}
                     />
                 </span>
-
-
                 <h4>Choose an engine type:</h4>
                 {engines.map((engine, index) => (
                     <span key={index}>
                         <input
                             type='radio'
                             name='engine'
-                            checked={engine === newCar.engine}
                             value={engine}
                             onChange={() => setNewCar({ ...newCar, engine })}
+                            checked={engine === newCar.engine}
+                            required
                         />
                         {engine}
                     </span>
