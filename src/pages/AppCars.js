@@ -10,7 +10,7 @@ export default function AppCars() {
 
     useEffect(() => {
         async function retrieveCars() {
-            const data = await CarService.getAll();
+            const { data } = await CarService.getAll();
             setCars(data);
         };
         retrieveCars();
@@ -44,10 +44,10 @@ export default function AppCars() {
                         brand={car.brand}
                         model={car.model}
                         year={car.year}
-                        maxSpeed={car.maxSpeed}
-                        isAutomatic={car.isAutomatic}
+                        maxSpeed={car.max_speed}
+                        isAutomatic={car.is_automatic}
                         engine={car.engine}
-                        numberOfDoors={car.numberOfDoors}
+                        numberOfDoors={car.number_of_doors}
                         editFunction={handleEdit}
                         deleteFunction={handleDelete}
                     />

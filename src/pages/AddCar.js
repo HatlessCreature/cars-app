@@ -38,9 +38,9 @@ export default function AddCar() {
             brand: '',
             model: '',
             year: rangeOfYears[0],
-            maxSpeed: '',
-            numberOfDoors: '',
-            isAutomatic: false,
+            max_speed: '',
+            number_of_doors: '',
+            is_automatic: false,
             engine: '',
         });
     };
@@ -50,9 +50,9 @@ export default function AddCar() {
         Brand: ${newCar.brand} \n
         Model: ${newCar.model} \n
         Year: ${newCar.year} \n
-        Max speed: ${newCar.maxSpeed} \n
-        Number of doors: ${newCar.numberOfDoors} \n
-        Automatic: ${newCar.isAutomatic ? 'Yes' : 'No'} \n
+        Max speed: ${newCar.max_speed} \n
+        Number of doors: ${newCar.number_of_doors} \n
+        Automatic: ${newCar.is_automatic ? 'Yes' : 'No'} \n
         Engine: ${newCar.engine} \n
         `);
     };
@@ -112,18 +112,18 @@ export default function AddCar() {
                 </select>
                 <input
                     type='number'
-                    value={newCar.maxSpeed}
+                    value={newCar.max_speed}
                     placeholder='Max speed'
                     onChange={({ target }) =>
-                        setNewCar({ ...newCar, maxSpeed: target.value })
+                        setNewCar({ ...newCar, max_speed: target.value })
                     }
                 />
                 <input
                     type='number'
-                    value={newCar.numberOfDoors}
+                    value={newCar.number_of_doors}
                     placeholder='Number of doors'
                     onChange={({ target }) =>
-                        setNewCar({ ...newCar, numberOfDoors: target.value })
+                        setNewCar({ ...newCar, number_of_doors: target.value })
                     }
                     required
                 />
@@ -131,9 +131,9 @@ export default function AddCar() {
                     <label>Is it automatic?</label>
                     <input
                         type='checkbox'
-                        checked={newCar.isAutomatic}
+                        checked={newCar.is_automatic}
                         onChange={({ target }) => {
-                            setNewCar({ ...newCar, isAutomatic: target.checked });
+                            setNewCar({ ...newCar, is_automatic: target.checked });
                         }}
                     />
                 </span>
