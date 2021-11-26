@@ -5,6 +5,7 @@ import AppCars from './pages/AppCars';
 import AddCar from './pages/AddCar';
 import AppLogin from './pages/AppLogin';
 import AuthService from './services/AuthService';
+import AppRegister from './pages/AppRegister';
 
 function App() {
   const isAuthenticated = !!localStorage.getItem("token");
@@ -33,6 +34,9 @@ function App() {
                 <li>
                   <Link to='/login'>Login</Link>
                 </li>
+                <li>
+                  <Link to="/register">Register</Link>
+                </li>
               </>
             )}
           </ul>
@@ -49,6 +53,9 @@ function App() {
           </Route>
           <Route exact path='/login'>
             <AppLogin />
+          </Route>
+          <Route exact path='/register'>
+            <AppRegister />
           </Route>
           <Route exact path={`/`}>
             <Redirect to='/cars' />

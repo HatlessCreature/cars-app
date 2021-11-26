@@ -12,9 +12,16 @@ class AuthService extends HttpService {
         localStorage.removeItem("token");
     }
 
-    async register() {
-
+    async register(userData) {
+        const { data } = await this.client.post("/auth/register", userData);
+        localStorage.setItem("token", data.token);
+        return data;
     }
+
+    async getActiveUser() {
+        const { data } = await this.client.get("/auth/me");
+        return data;
+    };
 
 
 }
