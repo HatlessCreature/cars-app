@@ -1,11 +1,6 @@
-import axios from 'axios';
+import HttpService from "./HttpService";
 
-class CarService {
-    constructor() {
-        this.client = axios.create({
-            baseURL: 'http://localhost:8000/api',
-        });
-    }
+class CarService extends HttpService {
 
     async getAll() {
         try {
