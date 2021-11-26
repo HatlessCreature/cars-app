@@ -6,6 +6,7 @@ import AddCar from './pages/AddCar';
 import AppLogin from './pages/AppLogin';
 import AuthService from './services/AuthService';
 import AppRegister from './pages/AppRegister';
+import Car from './pages/Car';
 
 function App() {
   const isAuthenticated = !!localStorage.getItem("token");
@@ -44,6 +45,9 @@ function App() {
         <Switch>
           <Route exact path='/cars'>
             <AppCars />
+          </Route>
+          <Route exact path='/cars/:id'>
+            <Car />
           </Route>
           <Route exact path='/add'>
             <AddCar />
