@@ -7,6 +7,8 @@ import AppLogin from './pages/AppLogin';
 import AuthService from './services/AuthService';
 import AppRegister from './pages/AppRegister';
 import Car from './pages/Car';
+import GuestRoute from './components/shared/GuestRoute';
+import PrivateRoute from './components/shared/PrivateRoute';
 
 function App() {
   const isAuthenticated = !!localStorage.getItem("token");
@@ -43,24 +45,24 @@ function App() {
           </ul>
         </nav>
         <Switch>
-          <Route exact path='/cars'>
+          <PrivateRoute exact path='/cars'>
             <AppCars />
-          </Route>
-          <Route exact path='/cars/:id'>
+          </PrivateRoute>
+          <PrivateRoute exact path='/cars/:id'>
             <Car />
-          </Route>
-          <Route exact path='/add'>
+          </PrivateRoute>
+          <PrivateRoute exact path='/add'>
             <AddCar />
-          </Route>
+          </PrivateRoute>
           <Route exact path='/edit/:id'>
             <AddCar />
           </Route>
-          <Route exact path='/login'>
+          <GuestRoute exact path='/login'>
             <AppLogin />
-          </Route>
-          <Route exact path='/register'>
+          </GuestRoute>
+          <GuestRoute exact path='/register'>
             <AppRegister />
-          </Route>
+          </GuestRoute>
           <Route exact path={`/`}>
             <Redirect to='/cars' />
           </Route>
