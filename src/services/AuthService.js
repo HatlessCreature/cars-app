@@ -8,7 +8,8 @@ class AuthService extends HttpService {
     }
 
     async logout() {
-
+        await this.client.post("/auth/logout");
+        localStorage.removeItem("token");
     }
 
     async register() {

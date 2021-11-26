@@ -4,8 +4,14 @@ import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-ro
 import AppCars from './pages/AppCars';
 import AddCar from './pages/AddCar';
 import AppLogin from './pages/AppLogin';
+import AuthService from './services/AuthService';
 
 function App() {
+  const isAuthenticated = !!localStorage.getItem("token");
+
+  function handleLogout() {
+    AuthService.logout();
+  }
   return (
     <Router>
       <div>
@@ -14,12 +20,21 @@ function App() {
             <li>
               <Link to='/cars'>Cars</Link>
             </li>
-            <li>
-              <Link to='/add'>Create a new car</Link>
-            </li>
-            <li>
-              <Link to='/login'>Login</Link>
-            </li>
+
+            {isAuthenticated ? (
+              <>
+                <li>
+                  <Link to='/add'>Create a new car</Link>
+                </li>
+                <button onClick={handleLogout}>Logout</button>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link to='/login'>Login</Link>
+                </li>
+              </>
+            )}
           </ul>
         </nav>
         <Switch>
